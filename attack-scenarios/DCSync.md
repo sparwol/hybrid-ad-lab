@@ -20,15 +20,12 @@ Preconditions:
 - svc-repl has Replicating Directory Changes, Replicating Directory Changes All, and Replicating Directory Secrets rights on the domain root
 
 ## Objectives
-Enumerate accounts with replication rights
+- Enumerate accounts with replication rights
+- Use svc-repl credentials to perform DCSync
+- Extract password hashes for high-value targets
+- Optionally forge a Golden Ticket using krbtgt hash
 
-Use svc-repl credentials to perform DCSync
-
-Extract password hashes for high-value targets
-
-Optionally forge a Golden Ticket using krbtgt hash
-
-🛠️ Execution Steps
+## Execution Steps
 ### 1. Discover Accounts with Replication Rights
 Use PowerView:
 
