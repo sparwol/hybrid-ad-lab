@@ -1,0 +1,14 @@
+// Kerberoasting Detection in Windows Event Logs
+// Detects TGS requests for service accounts (Event ID 4769)
+// MITRE T1558.003 – Kerberoasting
+
+SecurityEvent
+| where EventID == 4769
+| where TicketOptions has_any ("0x40810010", "0x40810000")  // Forwardable & Renewable
+| where ServiceName endswith "$" == false  // Exclude machine accounts
+| summarize TGSRequestCount = count(),
+            UniqueAccounts = dcount(Account),
+            UniqueSPNs = dcount(ServiceName)
+            by ClientAddress, bin(TimeGenerated, 15m)
+| where TGSRequestCount > 5 and UniqueSPNs > 3
+| order by TGSRequestCount desc

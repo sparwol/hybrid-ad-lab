@@ -17,7 +17,7 @@ This lab simulates real-world initial access and privilege escalation attacks in
 
 ## Lab Setup
 The environment includes:
-- 1 Domain Controller (Windows Server 2022)
+- 1 Domain Controller (Windows Server 2025)
 - 1 Entra ID-joined Windows 11 workstation
 - 1 Hybrid Azure AD connector (Azure AD Connect)
 - Defender for Identity + Sentinel (Optional)
