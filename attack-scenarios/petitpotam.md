@@ -2,12 +2,9 @@
 PetitPotam abuses MS-EFSRPC (Encrypting File System Remote Protocol) to coerce an authenticated Windows host (typically a Domain Controller or File Server) into making an SMB connection to an attacker-controlled machine. This coerced authentication can be relayed via NTLM Relay to gain elevated access.
 
 ## MITRE ATT&CK Techniques:
-
-T1557.001 – Adversary-in-the-Middle: LLMNR/NBT-NS Poisoning
-
-T1557.002 – SMB/NTLM Relay
-
-T1556.004 – Credential Relay via Coerced Authentication
+- T1557.001 – Adversary-in-the-Middle: LLMNR/NBT-NS Poisoning
+- T1557.002 – SMB/NTLM Relay
+- T1556.004 – Credential Relay via Coerced Authentication
 
 ## Lab Environment
 - **Attacker machine:** attacker-vm (Kali or Ubuntu)
@@ -69,30 +66,22 @@ SecurityEvent
 
 ### Defender for Identity
 Alert: "Suspicious Kerberos-based authentication attempt"
-
 Alert: "SMB relay attack attempt detected"
 
 ## Mitigations
 - Block outbound SMB where not needed
-
 - Require SMB and LDAP signing on all internal servers
-
 - Disable the EFS service (if unused)
-
 - Patch vulnerable systems (PetitPotam was mitigated by MS in patches starting mid-2021)
-
 - Example GPO to disable EFS:
 
 ```Computer Configuration > Windows Settings > Security Settings > Public Key Policies > Encrypting File System > Do not allow```
 
 ## References
-https://github.com/topotam/PetitPotam
-
-https://dirkjanm.io/relaying-ntlm-to-ldap-with-ldaps-in-2020/
-
-https://attack.mitre.org/techniques/T1557/002/
-
-https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36942
+- https://github.com/topotam/PetitPotam
+- https://dirkjanm.io/relaying-ntlm-to-ldap-with-ldaps-in-2020/
+- https://attack.mitre.org/techniques/T1557/002/
+- https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36942
 
 ## Navigation
 [Back to Lab Index:](../../README.md)

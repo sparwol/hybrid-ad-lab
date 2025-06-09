@@ -25,10 +25,15 @@ The environment includes:
 [Lab Setup Instructions →](lab-setup/)
 
 ## Attack Scenarios
-- [Password Spray](attack-scenarios/password-spray/)
-- [Kerberoasting](attack-scenarios/kerberos-delegation/)
-- [DC Sync Misuse](attack-scenarios/dcsync/)
-- [Entra MFA Bypass](attack-scenarios/azure-mfa-bypass/)
+- [Password Spray](./attack-scenarios/password-spray.md)
+- [NTLM Relay](./attack-scenarios/NTLM-relay.md)
+- [Kerberos Attacks](./attack-scenarios/kerberos/)
+    - [Kerberoasting](./attack-scenarios/kerberos/kerberoasting.md)
+    - [Golden Ticket](./attack-scenarios/kerberos/golden-ticket.md)
+    - [Resource-Based Constrained Delegation](./attack-scenarios/kerberos/rbcd.md)
+    - [Unconstrained Delegation](./attack-scenarios/kerberos/unconstraied-delegation.md)
+- [DC Sync Misuse](./attack-scenarios/DCSync.md)
+- [PetitPotam](attack-scenarios/petitpotam.md)
 
 ## Detection Logic
 - KQL queries (Sentinel / Defender)

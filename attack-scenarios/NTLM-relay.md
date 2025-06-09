@@ -2,11 +2,10 @@
 NTLM Relay allows an attacker to intercept and relay authentication attempts to another server, impersonating the original user. This enables command execution or access to services as the victim account — without needing to crack the hash.
 
 ## MITRE ATT&CK Techniques:
+- T1557.001 – Adversary-in-the-Middle: LLMNR/NBT-NS Spoofing
+- T1557.002 – SMB/NTLM Relay
 
-T1557.001 – Adversary-in-the-Middle: LLMNR/NBT-NS Spoofing
-T1557.002 – SMB/NTLM Relay
-
-# Lab Environment
+## Lab Environment
 - **Attacker system:** attacker-vm (Linux or Windows)
 - **Domain Controller:** dc01.internal.lab
 - **Victim host:** Any domain-joined machine with SMB traffic
@@ -76,22 +75,16 @@ SecurityEvent
 | summarize count() by Computer, Account, IpAddress, bin(TimeGenerated, 1h)
 ```
 ## Mitigations
-Disable NTLM where possible (Network security: Restrict NTLM)
-
-Enable SMB signing and LDAP signing/channel binding
-
-Monitor for LLMNR, NBNS, and unexpected name resolution traffic
-
-Restrict local admin rights across workstations and servers
+- Disable NTLM where possible (Network security: Restrict NTLM)
+- Enable SMB signing and LDAP signing/channel binding
+- Monitor for LLMNR, NBNS, and unexpected name resolution traffic
+- Restrict local admin rights across workstations and servers
 
 ## References
-https://github.com/SecureAuthCorp/impacket
-
-https://dirkjanm.io/ntlm-relaying-to-ldap-with-ldaps/
-
-https://attack.mitre.org/techniques/T1557/002/
-
-https://book.hacktricks.xyz/windows-hardening/windows-local-ntlm-relay
+- https://github.com/SecureAuthCorp/impacket
+- https://dirkjanm.io/ntlm-relaying-to-ldap-with-ldaps/
+- https://attack.mitre.org/techniques/T1557/002/
+- https://book.hacktricks.xyz/windows-hardening/windows-local-ntlm-relay
 
 ## Navigation
 [Back to Lab Index:](../../README.md)

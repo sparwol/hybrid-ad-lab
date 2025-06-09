@@ -6,7 +6,6 @@ This scenario demonstrates how attackers extract and crack Kerberos service tick
 - Credential Access (T1558.003)
 
 ## Lab Environment
-
 - Active Directory Domain Controller (`DC01`)
 - Windows 11 workstation joined to domain
 - Service account: `svc-webapp`
@@ -15,14 +14,12 @@ This scenario demonstrates how attackers extract and crack Kerberos service tick
   - Password: weak / old
 
 ## Objectives
-
 - Enumerate user accounts with SPNs
 - Request TGS tickets
 - Extract and crack TGS hashes offline
 - Reuse credentials for SMB or RDP access
 
 ## Execution
-
 ### 1. Enumerate SPNs with PowerView
 
 ```Get-DomainUser -SPN | Select SamAccountName, ServicePrincipalName```

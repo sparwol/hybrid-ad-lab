@@ -1,25 +1,19 @@
 # Attack Scenario: Resource-Based Constrained Delegation (RBCD) Abuse
 This scenario demonstrates abuse of Resource-Based Constrained Delegation, where an attacker controlling a machine account configures another machine to trust it for delegation. This enables impersonation of any domain user (including privileged ones) when accessing services on that resource.
 
-MITRE ATT&CK Techniques:
-
-T1550.002 – Pass-the-Ticket
-
-T1134.001 – Token Impersonation/Theft
+## MITRE ATT&CK Techniques:
+- T1550.002 – Pass-the-Ticket
+- T1134.001 – Token Impersonation/Theft
 
 ##  Lab Environment
-Controlled machine account: WS01$
-
-Target system: APP01.internal.lab
-
-Domain Controller: dc01.internal.lab
-
-Privileged user: admin.internal.lab
+- **Controlled machine account:** WS01$
+- **Target system:** APP01.internal.lab
+- **Domain Controller:** dc01.internal.lab
+- **Privileged user:** admin.internal.lab
 
 Preconditions:
 
 - Attacker has rights to modify the msDS-AllowedToActOnBehalfOfOtherIdentity attribute on APP01
-
 - Kerberos Constrained Delegation is configured on the domain
 
 ## Objectives
@@ -56,33 +50,27 @@ Try:
 ```dir \\APP01\C$ or Enter-PSSession using injected ticket```
 
 ## Detection Guidance
-Defender for Identity:
+### Defender for Identity:
 Unusual delegation configurations
 
 "Suspicious Kerberos delegation usage"
 
-Logs:
+### Logs:
 - 4742: Computer object modified (RBCD attribute)
 - 4769: TGS requests for high-privileged users using delegation
 - 4624: Logon events to APP01 from an unusual machine account
 
 ## Mitigations
-Monitor and restrict GenericAll / WriteProperty permissions on computer objects
-
-Alert on changes to msDS-AllowedToActOnBehalfOfOtherIdentity
-
-Use gMSAs and tiered admin access to reduce risk
-
-Limit account permissions with Least Privilege principles
+- Monitor and restrict GenericAll / WriteProperty permissions on computer objects
+- Alert on changes to msDS-AllowedToActOnBehalfOfOtherIdentity
+- Use gMSAs and tiered admin access to reduce risk
+- Limit account permissions with Least Privilege principles
 
 ## References
-https://dirkjanm.io/abusing-active-directory-acls-weaponizing-ldap/
-
-https://github.com/GhostPack/Rubeus
-
-https://adsecurity.org/?p=4056
-
-https://attack.mitre.org/techniques/T1550/002/
+- https://dirkjanm.io/abusing-active-directory-acls-weaponizing-ldap/
+- https://github.com/GhostPack/Rubeus
+- https://adsecurity.org/?p=4056
+- https://attack.mitre.org/techniques/T1550/002/
 
 ## Navigation
 ← [Back to Lab Index](../../README.md)
