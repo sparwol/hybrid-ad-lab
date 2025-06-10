@@ -22,7 +22,7 @@ The environment includes:
 - 1 Hybrid Azure AD connector (Azure AD Connect)
 - Defender for Identity + Sentinel (Optional)
 
-[Lab Setup Instructions →](lab-setup/)
+[Lab Setup Instructions →](lab-setup.md)
 
 ## Attack Scenarios
 - [Password Spray](./attack-scenarios/password-spray.md)
