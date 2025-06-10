@@ -119,4 +119,4 @@ Use Kali Linux or Parrot OS:
 
 Navigation
 [Back to Lab Index:](README.md)
-[Jump to:](./attack-scenarios/)
+[Jump to Attack Scenarios:](./attack-scenarios/)
