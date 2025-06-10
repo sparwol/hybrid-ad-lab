@@ -83,8 +83,7 @@ Use Kali Linux or Parrot OS:
 
 ### Install Common Tools
 
-```
-sudo apt update && sudo apt install -y \
+```sudo apt update && sudo apt install -y \
   bloodhound \
   neo4j \
   evil-winrm \
@@ -93,8 +92,11 @@ sudo apt update && sudo apt install -y \
   impacket-scripts \
   mitmproxy \
   python3-pip
+  ```
 
-pip3 install roadrecon aadinternals token-tactics```
+
+
+```pip3 install roadrecon aadinternals token-tactics```
 ### Optional tools:
 
 - mimikatz (on Windows)
