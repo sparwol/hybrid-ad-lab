@@ -17,11 +17,9 @@ Preconditions:
 - Kerberos Constrained Delegation is configured on the domain
 
 ## Objectives
-Configure RBCD to allow WS01$ to impersonate any user on APP01
-
-Impersonate a high-privilege user (e.g., Domain Admin)
-
-Access resources on the target machine as that user
+- Configure RBCD to allow WS01$ to impersonate any user on APP01
+- Impersonate a high-privilege user (e.g., Domain Admin)
+- Access resources on the target machine as that user
 
 ## Execution Steps
 ### 1. Confirm You Control a Machine Account
@@ -51,9 +49,8 @@ Try:
 
 ## Detection Guidance
 ### Defender for Identity:
-Unusual delegation configurations
-
-"Suspicious Kerberos delegation usage"
+- Unusual delegation configurations
+- "Suspicious Kerberos delegation usage"
 
 ### Logs:
 - 4742: Computer object modified (RBCD attribute)
