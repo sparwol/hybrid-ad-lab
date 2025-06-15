@@ -50,13 +50,12 @@ or use BloodHound to pivot further.
 
 ##  Detection Guidance
 ### Microsoft Defender for Identity:
-"Suspected use of ticket theft attack"
-
-"Kerberos ticket reuse detected"
+- "Suspected use of ticket theft attack"
+- "Kerberos ticket reuse detected"
 
 ### Event Logs:
-4769: TGS Request for high-privilege users
-4624 Type 3: Network logons into sensitive systems
+- 4769: TGS Request for high-privilege users
+- 4624 Type 3: Network logons into sensitive systems
 
 ### KQL Example (Microsoft Sentinel):
 ```
